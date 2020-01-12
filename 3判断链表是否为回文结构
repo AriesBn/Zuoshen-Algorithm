@@ -1,0 +1,22 @@
+新建一个栈
+Stack<Node> stack=new Stack<Node>();
+将节点依次放入栈 besecase是下个节点为空
+	while(cur.next!=null){
+		stack.push(cur);
+		cur=cur.next;
+	}
+在循环一个遍一个正常向下 一个从栈弹出 看是否一致
+public static boolean isPalindrome(Node head){
+	Node cur=head;
+	while(cur.next!=null){
+		stack.push(cur);
+		cur=cur.next;
+	}
+	while(head!=null){
+		if(stack.pop().value()!=head.value()){
+			return false;
+		}
+		head=head.next;
+	}
+	return true;
+}

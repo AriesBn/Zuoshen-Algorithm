@@ -1,0 +1,46 @@
+窗口移动 
+定义一个左指针 left  和等于大于目标值左指针移动
+if(sum>k){
+	sum-=arr[left];
+}
+
+一个右指针right  小于目标值右指针移动
+if(sum<k){
+	sum+=arr[++right] 里面的细节应该是先移动判断再加
+}
+
+终止条件是右指针初级循环次数未知用while
+while(right==arr.length){}
+
+定义一个不断更新的最大长度 maxlength=Math.max(maxlength,right-left+1); 
+如果和相等于目标值 就进行更新
+if(sum==k){
+	maxlength=Math.max(maxlength,right-left+1); 
+	sum+=arr[right++];}
+
+最后返回maxlength;
+
+public int getMaxLength(int[] arr,int k){
+	if(arr==null&arr.length==null){
+		return 0;
+	}
+	int left=0;
+	int right=0;
+	int sum=arr[0];
+	int maxlength=0;
+	while(right==arr.length){
+		if(sum==k){
+			maxlength=Math.max(maxlength,right-left+1); 
+			sum-=arr[left++];
+		}else if(sum<k){
+			right++；
+			if(right==arr.length){
+				break;
+			}
+			sum+=arr[right];
+		}else{
+			sum-=arr[left++];
+		}
+	}
+	return maxlength;
+}  

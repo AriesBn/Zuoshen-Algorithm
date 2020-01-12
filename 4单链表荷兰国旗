@@ -1,0 +1,56 @@
+边括边交换
+单纯数字partition --->链表partition
+1、两边往中间括 需要两条曲线和一个指针 终止条件index==big
+int small=-1;
+int big=arr.igth;
+int index=0;
+2、曲线先变化是因为他们本身在外面
+   小于的话index++是因为直接换到后面啦
+   大于的话换回来的不确定所以index不加加
+3、遍历节点把Node中的值拿出来形成一个数组再依次连接
+	单链表要用数组的话首先要知道链表的长度 节点向下长度跟踪
+
+
+
+public void arrPartition(int[] arr,int pivot){
+	int small=-1;
+	int big=arr.igth;
+	int index=0;
+	while(index!=big){
+		if(arr[index]<pivot){
+			swap(arr,++small,index++);
+		}else if(arr[index]>pivot){
+			swap(arr,--big,index);
+		}else{
+			index++;
+		}	
+	}
+}
+public static Node listPartition(Node head,int pivot){
+	if(head==null){
+		return head;
+	}
+	
+	Node cur=head;
+	int i=0;
+	while(cur!=null){
+		i++;
+		cur=cur.next;
+	}
+	
+	Node[] arrNode=new Node[i];
+	cur=head;
+	for(i=0;i<arr.length;i++){
+		arrNode[i++]=cur;
+		cur=cur.next;
+	}
+	arrPartition(arrNode,pivot);
+	
+	//将数组中的每个节点连接
+	for(i=1;i!=arrNode.length;i++){
+		arrNode[i-1].next=arrNode[i];
+	}
+	//此时i为数组的长度 i-1正好是数组下标
+	arrNode[i-1].next=null;
+	return arrNode[0];
+}

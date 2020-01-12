@@ -1,0 +1,9 @@
+class Node{
+	private int value;
+	private Node next;
+}
+public static void main(String ){
+	
+	
+	
+}
